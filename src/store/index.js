@@ -1,5 +1,8 @@
 import { createStore } from 'vuex'
 
+import links from "@/store/modules/links";
+import drawer from "@/store/modules/drawer";
+
 export default createStore({
   state: {
   },
@@ -10,5 +13,7 @@ export default createStore({
   actions: {
   },
   modules: {
+    links,
+    drawer,
   }
 })
