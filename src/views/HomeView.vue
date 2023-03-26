@@ -1,20 +1,25 @@
 <template>
   <div class="container-center">
-    <HomeClock></HomeClock>
+    <HomeClock v-if="getUseClock"></HomeClock>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import HomeClock from "@/components/widgets/HomeClock";
+import {mapGetters} from "vuex";
 
 // Components
 export default defineComponent({
   name: 'HomeView',
-
   components: {
     HomeClock
   },
+  computed: {
+    ...mapGetters([
+        'getUseClock'
+    ])
+  }
 });
 </script>
 

@@ -1,10 +1,12 @@
 <template>
-  <div class="clock">
+  <div class="clock" :style="{background: getBackground}">
     {{ hours }}:{{ minutes }}:{{ seconds }}
   </div>
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: "HomeClock",
   beforeCreate() {
@@ -23,7 +25,9 @@ export default {
     }
   },
   computed: {
-
+    ...mapGetters([
+        'getBackground'
+    ])
   },
   data() {
     return {

@@ -13,8 +13,8 @@
 
 <script>
 
-import HomeHeader from "@/components/ui/HomeHeader";
-import HomeDrawer from "@/components/ui/HomeDrawer";
+import HomeHeader from "@/components/interface/HomeHeader";
+import HomeDrawer from "@/components/interface/HomeDrawer";
 
 export default {
   name: 'App',
