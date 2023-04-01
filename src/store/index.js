@@ -5,6 +5,8 @@ import drawer from "@/store/modules/drawer";
 import settings from "@/store/modules/settings";
 import clock from "@/store/modules/clock";
 
+import cache from "@/store/modules/cache";
+
 export default createStore({
   state: {
   },
@@ -18,6 +20,7 @@ export default createStore({
     links,
     drawer,
     settings,
-    clock
+    clock,
+    cache
   }
 })

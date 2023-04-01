@@ -13,7 +13,6 @@ const getters = {
 const actions = {
     setUseClock(ctx, value) {
         ctx.commit('setUseClock', value);
-        // localStorage.setItem('links', JSON.stringify(value));
     }
 
 }

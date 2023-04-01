@@ -1,11 +1,25 @@
 <template>
-  <div class="clock" :style="{background: getBackground}">
-    {{ hours }}:{{ minutes }}:{{ seconds }}
+  <div class="clock"
+       :style="{
+          background: getBackground,
+          color: getColor,
+          width: `${getWidth}px`,
+          height: `${getHeight}px`,
+          fontSize: `${getFontSize}px`,
+          fontWeight: `${getFontWeight}`
+  }">
+   <span>
+     {{ time }}
+   </span>
+    <span v-if="useDate">
+     {{ date }}
+   </span>
   </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapState} from "vuex";
+import moment from "moment";
 
 export default {
   name: "HomeClock",
@@ -14,26 +28,37 @@ export default {
   },
   methods: {
     setTime() {
-      const date = new Date();
-      this.hours = this.setupValue(date.getHours());
-      this.minutes = this.setupValue(date.getMinutes());
-      this.seconds = this.setupValue(date.getSeconds())
+      this.time = moment().format('HH:mm:ss');
     },
-    setupValue(val) {
-      val = val <= 9 ? `${val}`.padStart(2, 0) : val
-      return val;
-    }
+    setDate() {
+      this.date = moment().format('DD.mm.yyyy');
+    },
   },
   computed: {
     ...mapGetters([
-        'getBackground'
+
+      //  Colors
+      'getBackground',
+      'getColor',
+
+      //  Block size
+      'getWidth',
+      'getHeight',
+
+      // Font
+      'getFontSize',
+      'getFontWeight',
+
+      // Format
+      'useDate',
+      'useDay',
+      'useFullHours',
     ])
   },
   data() {
     return {
-      hours: this.setupValue(new Date().getHours()),
-      minutes: this.setupValue(new Date().getMinutes()),
-      seconds: this.setupValue(new Date().getSeconds()),
+      time: moment().format('HH:mm:ss'),
+      date: moment().format('DD.mm.yyyy')
     }
   },
 }
@@ -45,8 +70,11 @@ export default {
   font-family: 'Roboto Mono', monospace;
   font-size: 3.5rem;
   font-weight: 600;
-  color: #ffffff;
   margin-bottom: 0.25em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 </style>

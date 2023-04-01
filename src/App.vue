@@ -15,12 +15,26 @@
 
 import HomeHeader from "@/components/interface/HomeHeader";
 import HomeDrawer from "@/components/interface/HomeDrawer";
+import { getField, updateField } from 'vuex-map-fields';
+import {mapActions} from "vuex";
 
 export default {
   name: 'App',
   components: {
     HomeDrawer,
     HomeHeader
+  },
+  methods: {
+    ...mapActions([
+      'loadFromCache'
+    ])
+  },
+  mounted() {
+    this.loadFromCache();
+
+    this.$store.subscribe((mutation, state) => {
+      localStorage.setItem('homepage', JSON.stringify(state))
+    })
   },
 
   data: () => ({
