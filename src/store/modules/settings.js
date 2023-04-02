@@ -1,5 +1,3 @@
-import { getField, updateField } from "vuex-map-fields";
-
 const state = {
     general: {
         useClock: true
@@ -7,14 +5,22 @@ const state = {
 };
 
 const getters = {
+    getUseClock: state => {
+        return state.general.useClock
+    }
 };
 
 const actions = {
+    setUseClock(ctx, value) {
+        ctx.commit('setUseClock', value);
+    }
 
 }
 
 const mutations = {
-    updateField,
+    setUseClock(state, data) {
+        state.general.useClock = data;
+    }
 }
 
 

@@ -30,7 +30,6 @@
 <script>
 import {mapGetters, mapState} from "vuex";
 import moment from "moment";
-import {mapFields} from "vuex-map-fields";
 
 export default {
   name: "HomeClock",
@@ -46,28 +45,26 @@ export default {
     },
   },
   computed: {
-    ...mapFields({
+    ...mapGetters([
 
       // Block
-      getBlockWidth: 'block.width',
-      getBlockHeight: 'block.height',
-      getBlockBackground: 'block.background',
+      'getBlockBackground',
+      'getBlockWidth',
+      'getBlockHeight',
 
       // Time
-      getUseTime: 'time.useTime',
-      getTimeColor: 'time.color',
-      getTimeFontSize: 'time.fontSize',
-      getTimeFontWeight: 'time.fontWeight',
-      getTimeUseFullHours: 'time.useFullHours',
+      'getTimeColor',
+      'getTimeFontSize',
+      'getTimeFontWeight',
 
       // Date
-      getUseDate: 'date.useDate',
-      getDateColor: 'date.color',
-      getDateFontSize: 'date.fontSize',
-      getDateFontWeight: 'date.fontWeight',
-      getDateUseDay: 'date.useDay',
-      getDatePosition: 'date.position',
-    }),
+      'getUseDate',
+      'getDateColor',
+      'getDateFontSize',
+      'getDateFontWeight',
+      'getDateUseDay',
+      'getDatePosition'
+    ])
   },
   data() {
     return {

@@ -1,10 +1,11 @@
 <template>
   <div class="d-flex justify-space-between container pl-5 pr-5">
     <span class="mr-6 w-25"> {{ title }} </span>
-    <v-slider v-model="model"
+    <v-slider :model-value="value"
               :min="min"
               :max="max"
-              thumb-label>
+              thumb-label
+              @update:modelValue="update">
     </v-slider>
   </div>
 </template>
@@ -30,14 +31,9 @@ export default {
       default: 100
     },
   },
-  data() {
-    return {
-      model: this.value
-    }
-  },
-  watch: {
-    model(currentValue) {
-      this.$emit('update:modelValue', Math.round(currentValue))
+  methods: {
+    update(value) {
+      this.$emit('updateValue', Math.round(value))
     }
   },
 }

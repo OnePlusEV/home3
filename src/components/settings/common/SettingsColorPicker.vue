@@ -6,7 +6,6 @@
                     :model-value="value"
                     @update:modelValue="update"
                     elevation="0"
-                    :modes="['hexa']"
                     mode="hexa">
     </v-color-picker>
     <div class="pt-3">
