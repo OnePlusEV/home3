@@ -5,40 +5,46 @@
         <v-col cols="6">
           <v-list>
 
-            <v-card title="Block size" class="ma-5">
-              <settings-slider :value="getWidth" :min="100" :max="1000" @updateValue="setWidth"
+            <v-card title="Block" class="ma-5">
+              <settings-slider :value="getBlockWidth" :min="100" :max="1000" @updateValue="setBlockWidth"
                                title="Width block"></settings-slider>
-              <settings-slider :value="getHeight" :min="50" :max="300" @updateValue="setHeight"
+              <settings-slider :value="getBlockHeight" :min="50" :max="300" @updateValue="setBlockHeight"
                                title="Height block"></settings-slider>
-            </v-card>
-
-            <v-card title="Colors" class="ma-5">
-              <settings-color-picker :value="getBackground" @updateValue="setBackground"
+              <settings-color-picker :value="getBlockBackground" @updateValue="setBlockBackground"
                                      title="Background"></settings-color-picker>
-              <settings-color-picker :value="getColor" @updateValue="setColor" title="Color"></settings-color-picker>
             </v-card>
 
-            <v-card title="Font" class="ma-5">
-              <settings-slider :value="getFontSize" :min="10" :max="72" @updateValue="setFontSize"
+            <v-card title="Time block" class="ma-5">
+              <!--              <div class="d-flex flex-column ml-2">-->
+              <!--                <v-checkbox-btn-->
+              <!--                    :value="useDate"-->
+              <!--                    label="Show time"-->
+              <!--                    @input="setUseDate"-->
+              <!--                ></v-checkbox-btn>-->
+              <!--              </div>-->
+              <settings-color-picker :value="getTimeColor" @updateValue="setTimeColor"
+                                     title="Color"></settings-color-picker>
+              <settings-slider :value="getTimeFontSize" :min="10" :max="72" @updateValue="setTimeFontSize"
                                title="Font size"></settings-slider>
-              <settings-slider :value="getFontWeight" :min="100" :max="1000" @updateValue="setFontWeight"
+              <settings-slider :value="getTimeFontWeight" :min="100" :max="1000" @updateValue="setTimeFontWeight"
                                title="Font weight"></settings-slider>
             </v-card>
 
-<!--            <v-card title="Data" class="ma-5">-->
-<!--              <div class="d-flex flex-column ml-2">-->
-<!--                <v-checkbox-btn-->
-<!--                    value="useDate"-->
-<!--                    label="Show date"-->
-<!--                    @input="setUseDate"-->
-<!--                ></v-checkbox-btn>-->
-<!--              </div>-->
-<!--            </v-card>-->
-
-            <!--            <v-card title="Format" class="ma-5">-->
-            <!--              <settings-slider :value="getFontSize" :min="10" :max="72" @updateValue="setFontSize" title="Font size"> </settings-slider>-->
-            <!--              <settings-slider :value="getFontWeight" :min="100" :max="1000" @updateValue="setFontWeight" title="Font weight"> </settings-slider>-->
-            <!--            </v-card>-->
+            <v-card title="Date block" class="ma-5">
+              <!--              <div class="d-flex flex-column ml-2">-->
+              <!--                <v-checkbox-btn-->
+              <!--                    :value="useDate"-->
+              <!--                    label="Show time"-->
+              <!--                    @input="setUseDate"-->
+              <!--                ></v-checkbox-btn>-->
+              <!--              </div>-->
+              <settings-color-picker :value="getDateColor" @updateValue="setDateColor"
+                                     title="Color"></settings-color-picker>
+              <settings-slider :value="getDateFontSize" :min="10" :max="72" @updateValue="setDateFontSize"
+                               title="Font size"></settings-slider>
+              <settings-slider :value="getDateFontWeight" :min="100" :max="1000" @updateValue="setDateFontWeight"
+                               title="Font weight"></settings-slider>
+            </v-card>
 
 
           </v-list>
@@ -72,49 +78,45 @@ export default {
   methods: {
     ...mapActions([
 
-      // General
-      'setUseClock',
+      // Block
+      'setBlockWidth',
+      'setBlockHeight',
+      'setBlockBackground',
 
-      // Colors
-      'setBackground',
-      'setColor',
+      // Time
+      'setTimeColor',
+      'setTimeFontSize',
+      'setTimeFontWeight',
 
-      // Block size
-      'setWidth',
-      'setHeight',
+      // Date
+      'setDateColor',
+      'setDateFontSize',
+      'setDateFontWeight',
 
-      // Font
-      'setFontSize',
-      'setFontWeight',
 
-      // // Show date
-      // 'setUseDate',
-      // 'setUseDay',
-      // 'setUseFullHours',
     ]),
   },
   computed: {
     ...mapGetters([
 
+      // Block
+      'getBlockWidth',
+      'getBlockHeight',
+      'getBlockBackground',
+
+      // Time
+      'getTimeColor',
+      'getTimeFontSize',
+      'getTimeFontWeight',
+
+      // Date
+      'getDateColor',
+      'getDateFontSize',
+      'getDateFontWeight',
+
+
       // General
       'getUseClock',
-
-      // Color
-      'getBackground',
-      'getColor',
-
-      // Size block
-      'getWidth',
-      'getHeight',
-
-      // Font
-      'getFontSize',
-      'getFontWeight',
-
-      // //  Format
-      // 'useDate',
-      // 'useDay',
-      // 'useFullHours'
     ]),
   },
 }

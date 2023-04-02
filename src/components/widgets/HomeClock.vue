@@ -1,19 +1,29 @@
 <template>
   <div class="clock"
-       :style="{
-          background: getBackground,
-          color: getColor,
-          width: `${getWidth}px`,
-          height: `${getHeight}px`,
-          fontSize: `${getFontSize}px`,
-          fontWeight: `${getFontWeight}`
-  }">
-   <span>
-     {{ time }}
-   </span>
-    <span v-if="useDate">
-     {{ date }}
-   </span>
+       :style="{ background: getBlockBackground,
+                 width: `${getBlockWidth}px`,
+                 height: `${getBlockHeight}px`,
+       }">
+    <div v-if="getUseDate && getDatePosition"
+         :style="{ color: getDateColor,
+                  fontSize: `${getDateFontSize}px`,
+                  fontWeight: `${getDateFontWeight}`
+                 }">
+      {{ date }}
+    </div>
+    <div :style="{ color: getTimeColor,
+                   fontSize: `${getTimeFontSize}px`,
+                   fontWeight: `${getTimeFontWeight}`
+                  }">
+      {{ time }}
+    </div>
+    <div v-if="getUseDate && !getDatePosition"
+         :style="{ color: getDateColor,
+                  fontSize: `${getDateFontSize}px`,
+                  fontWeight: `${getDateFontWeight}`
+                 }">
+      {{ date }}
+    </div>
   </div>
 </template>
 
@@ -37,22 +47,23 @@ export default {
   computed: {
     ...mapGetters([
 
-      //  Colors
-      'getBackground',
-      'getColor',
+      // Block
+      'getBlockBackground',
+      'getBlockWidth',
+      'getBlockHeight',
 
-      //  Block size
-      'getWidth',
-      'getHeight',
+      // Time
+      'getTimeColor',
+      'getTimeFontSize',
+      'getTimeFontWeight',
 
-      // Font
-      'getFontSize',
-      'getFontWeight',
-
-      // Format
-      'useDate',
-      'useDay',
-      'useFullHours',
+      // Date
+      'getUseDate',
+      'getDateColor',
+      'getDateFontSize',
+      'getDateFontWeight',
+      'getDateUseDay',
+      'getDatePosition'
     ])
   },
   data() {
@@ -75,6 +86,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 </style>
