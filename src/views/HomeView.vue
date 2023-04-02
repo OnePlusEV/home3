@@ -1,6 +1,6 @@
 <template>
   <div class="container-center">
-    <HomeClock v-if="getUseClock"></HomeClock>
+    <HomeClock v-if="useClock"></HomeClock>
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 import { defineComponent } from 'vue';
 import HomeClock from "@/components/widgets/HomeClock";
 import {mapGetters} from "vuex";
+import {mapFields} from "vuex-map-fields";
 
 // Components
 export default defineComponent({
@@ -16,9 +17,9 @@ export default defineComponent({
     HomeClock
   },
   computed: {
-    ...mapGetters([
-        'getUseClock'
-    ])
+    ...mapFields({
+      useClock: 'general.useClock'
+    })
   }
 });
 </script>

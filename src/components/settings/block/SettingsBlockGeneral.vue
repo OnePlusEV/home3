@@ -1,26 +1,27 @@
 <template>
   <v-card title="General" class="ma-2">
-    <div class="d-flex flex-column ml-2">
-      <v-checkbox-btn
-          v-model=useClock
-          label="Enable clock"
-      ></v-checkbox-btn>
-    </div>
+    <v-row>
+      <v-col cols="6">
+        <settings-checkbox v-model="useClock" :value="useClock" title="Enable clock"></settings-checkbox>
+      </v-col>
+
+      <v-col cols="6">
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 
 <script>
+import SettingsCheckbox from "@/components/settings/common/SettingsCheckbox.vue";
+import {mapFields} from "vuex-map-fields";
+
 export default {
   name: "SettingsBlockGeneral",
+  components: {SettingsCheckbox},
   computed: {
-    useClock: {
-      get() {
-        return this.$store.getters.getUseClock;
-      },
-      set(v) {
-        return this.$store.commit('setUseClock', v)
-      }
-    }
+    ...mapFields({
+      useClock: 'general.useClock'
+    })
   }
 }
 </script>
