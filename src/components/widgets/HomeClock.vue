@@ -43,7 +43,7 @@ export default {
       this.time = moment().format('HH:mm:ss');
     },
     setDate() {
-      this.date = moment().format('DD.mm.yyyy');
+      this.date = moment().format('DD.MM.yyyy');
     },
   },
   computed: {
@@ -73,7 +73,7 @@ export default {
   data() {
     return {
       time: moment().format('HH:mm:ss'),
-      date: moment().format('DD.mm.yyyy')
+      date: moment().format('DD.MM.yyyy')
     }
   },
 }

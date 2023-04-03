@@ -3,14 +3,14 @@
     <span class="mr-6 pt-5 w-25"> {{ title }} </span>
     <v-color-picker :hide-canvas="show"
                     :hide-sliders="show"
-                    :model-value="value"
-                    @update:modelValue="update"
+                    v-model="model"
                     elevation="0"
+                    :modes="['hexa']"
                     mode="hexa">
     </v-color-picker>
     <div class="pt-3">
       <v-avatar @click="show = !show"
-                :color="value"
+                :color="model"
       >
         {{ show ? '' : 'X' }}
       </v-avatar>
@@ -33,12 +33,13 @@ export default {
   },
   data() {
     return {
-      show: true
+      show: true,
+      model: this.value
     }
   },
-  methods: {
-    update(value) {
-      this.$emit('updateValue', value)
+  watch: {
+    model(currentValue) {
+      this.$emit('update:modelValue', currentValue)
     }
   },
 }

@@ -43,17 +43,12 @@ const getters = {
 
     // getUseClock: state => state.general.useClock,
 
-    // Block
-    getBlockBackground: state => state.block.background,
-
     // Time
     getUseTime: state =>  state.time.useTime,
-    getTimeColor: state => state.time.color,
     getTimeUseFullHours: state => state.time.useFullHours,
 
     // Date
     getUseDate: state => state.date.useDate,
-    getDateColor: state => state.date.color,
     getDateUseDay: state => state.date.useDay,
     getDatePosition: state => state.date.position
 };
@@ -65,16 +60,8 @@ const actions = {
         commit('updateApplicationField', { path: 'general.useClock', value: value });
     },
 
-    // Block
-    setBlockBackground({ commit }, value) {
-        commit('updateApplicationField', { path: 'block.background', value: value });
-    },
-
     // Time
     setUseTime({ commit }, value) {
-        commit('updateApplicationField', { path: 'time.color', value: value });
-    },
-    setTimeColor({ commit }, value) {
         commit('updateApplicationField', { path: 'time.color', value: value });
     },
     setTimeUseFullHours({ commit }, value) {
@@ -84,9 +71,6 @@ const actions = {
     // Date
     setUseDate({ commit }, value) {
         commit('updateApplicationField', { path: 'date.useDate', value: value });
-    },
-    setDateColor({ commit }, value) {
-        commit('updateApplicationField', { path: 'date.color', value: value });
     },
     setDateUseDay({ commit }, value) {
         commit('updateApplicationField', { path: 'date.useDay', value: value });

@@ -10,19 +10,12 @@
                                title="Width block"></settings-slider>
               <settings-slider v-model="getBlockHeight" :value="getBlockHeight" :min="50" :max="300"
                                title="Height block"></settings-slider>
-              <settings-color-picker :value="getBlockBackground" @updateValue="setBlockBackground"
+              <settings-color-picker v-model="getBlockBackground" :value="getBlockBackground"
                                      title="Background"></settings-color-picker>
             </v-card>
 
             <v-card title="Time block" class="ma-5">
-              <!--              <div class="d-flex flex-column ml-2">-->
-              <!--                <v-checkbox-btn-->
-              <!--                    :value="useDate"-->
-              <!--                    label="Show time"-->
-              <!--                    @input="setUseDate"-->
-              <!--                ></v-checkbox-btn>-->
-              <!--              </div>-->
-              <settings-color-picker :value="getTimeColor" @updateValue="setTimeColor"
+              <settings-color-picker v-model="getTimeColor" :value="getTimeColor"
                                      title="Color"></settings-color-picker>
               <settings-slider v-model="getTimeFontSize" :value="getTimeFontSize" :min="10" :max="72"
                                title="Font size"></settings-slider>
@@ -31,14 +24,7 @@
             </v-card>
 
             <v-card title="Date block" class="ma-5">
-              <!--              <div class="d-flex flex-column ml-2">-->
-              <!--                <v-checkbox-btn-->
-              <!--                    :value="useDate"-->
-              <!--                    label="Show time"-->
-              <!--                    @input="setUseDate"-->
-              <!--                ></v-checkbox-btn>-->
-              <!--              </div>-->
-              <settings-color-picker :value="getDateColor" @updateValue="setDateColor"
+              <settings-color-picker v-model="getDateColor" :value="getDateColor"
                                      title="Color"></settings-color-picker>
               <settings-slider v-model="getDateFontSize" :value="getDateFontSize" :min="10" :max="72"
                                title="Font size"></settings-slider>
@@ -53,7 +39,6 @@
           <div class="container-center">
             <HomeClock v-if="getUseClock"></HomeClock>
             <div>
-              <!--                <v-color-picker mode="hexa"></v-color-picker>-->
             </div>
           </div>
         </v-col>
@@ -75,27 +60,6 @@ export default {
     SettingsSlider,
     SettingsColorPicker,
     HomeClock
-  },
-  methods: {
-    ...mapActions([
-
-      // Block
-      'setBlockWidth',
-      'setBlockHeight',
-      'setBlockBackground',
-
-      // Time
-      'setTimeColor',
-      'setTimeFontSize',
-      'setTimeFontWeight',
-
-      // Date
-      'setDateColor',
-      'setDateFontSize',
-      'setDateFontWeight',
-
-
-    ]),
   },
 
   computed: {
