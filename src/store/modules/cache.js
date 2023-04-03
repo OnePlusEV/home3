@@ -4,9 +4,11 @@ const state = {
 
 const actions = {
     loadFromCache(state) {
-        this.replaceState(
-            Object.assign(state, JSON.parse(localStorage.getItem('homepage')))
-        );
+        if (localStorage.getItem('homepage')) {
+            this.replaceState(
+                Object.assign(state, JSON.parse(localStorage.getItem('homepage')))
+            );
+        }
     }
 }
 

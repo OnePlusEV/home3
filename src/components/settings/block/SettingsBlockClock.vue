@@ -6,9 +6,9 @@
           <v-list>
 
             <v-card title="Block" class="ma-5">
-              <settings-slider :value="getBlockWidth" :min="100" :max="1000" @updateValue="setBlockWidth"
+              <settings-slider v-model="getBlockWidth" :value="getBlockWidth" :min="100" :max="1000"
                                title="Width block"></settings-slider>
-              <settings-slider :value="getBlockHeight" :min="50" :max="300" @updateValue="setBlockHeight"
+              <settings-slider v-model="getBlockHeight" :value="getBlockHeight" :min="50" :max="300"
                                title="Height block"></settings-slider>
               <settings-color-picker :value="getBlockBackground" @updateValue="setBlockBackground"
                                      title="Background"></settings-color-picker>
@@ -24,9 +24,9 @@
               <!--              </div>-->
               <settings-color-picker :value="getTimeColor" @updateValue="setTimeColor"
                                      title="Color"></settings-color-picker>
-              <settings-slider :value="getTimeFontSize" :min="10" :max="72" @updateValue="setTimeFontSize"
+              <settings-slider v-model="getTimeFontSize" :value="getTimeFontSize" :min="10" :max="72"
                                title="Font size"></settings-slider>
-              <settings-slider :value="getTimeFontWeight" :min="100" :max="1000" @updateValue="setTimeFontWeight"
+              <settings-slider v-model="getTimeFontWeight" :value="getTimeFontWeight" :min="100" :max="1000"
                                title="Font weight"></settings-slider>
             </v-card>
 
@@ -40,9 +40,9 @@
               <!--              </div>-->
               <settings-color-picker :value="getDateColor" @updateValue="setDateColor"
                                      title="Color"></settings-color-picker>
-              <settings-slider :value="getDateFontSize" :min="10" :max="72" @updateValue="setDateFontSize"
+              <settings-slider v-model="getDateFontSize" :value="getDateFontSize" :min="10" :max="72"
                                title="Font size"></settings-slider>
-              <settings-slider :value="getDateFontWeight" :min="100" :max="1000" @updateValue="setDateFontWeight"
+              <settings-slider v-model="getDateFontWeight" :value="getDateFontWeight" :min="100" :max="1000"
                                title="Font weight"></settings-slider>
             </v-card>
 
@@ -67,6 +67,7 @@ import SettingsColorPicker from "@/components/settings/common/SettingsColorPicke
 import HomeClock from "@/components/widgets/HomeClock.vue";
 import {mapActions, mapGetters} from "vuex";
 import SettingsSlider from "@/components/settings/common/SettingsSlider.vue";
+import {mapFields} from "vuex-map-fields";
 
 export default {
   name: "SettingsBlockClock",
@@ -96,23 +97,35 @@ export default {
 
     ]),
   },
+
   computed: {
-    ...mapGetters([
+    ...mapFields({
+
+      // General
+      useClock: 'general.useClock',
 
       // Block
-      'getBlockWidth',
-      'getBlockHeight',
-      'getBlockBackground',
+      getBlockWidth: 'block.width',
+      getBlockHeight: 'block.height',
+      getBlockBackground: 'block.background',
 
       // Time
-      'getTimeColor',
-      'getTimeFontSize',
-      'getTimeFontWeight',
+      getUseTime: 'time.useTime',
+      getTimeColor: 'time.color',
+      getTimeFontSize: 'time.fontSize',
+      getTimeFontWeight: 'time.fontWeight',
+      getTimeUseFullHours: 'time.useFullHours',
 
       // Date
-      'getDateColor',
-      'getDateFontSize',
-      'getDateFontWeight',
+      getUseDate: 'date.useDate',
+      getDateColor: 'date.color',
+      getDateFontSize: 'date.fontSize',
+      getDateFontWeight: 'date.fontWeight',
+      getDateUseDay: 'date.useDay',
+      getDatePosition: 'date.position',
+    }),
+
+    ...mapGetters([
 
 
       // General
